@@ -14,18 +14,22 @@ public class HelloServletTest {
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-
         driver = new ChromeDriver(options);
     }
 
     @Test
     public void testPageTitle() {
         driver.get("http://localhost:9090/java-web-app/hello");
+
+        // ← CRITICAL DEBUG LINES
+        System.out.println("%%% URL: " + driver.getCurrentUrl());
+        System.out.println("%%% TITLE: " + driver.getTitle());
+        System.out.println("%%% SOURCE: " + driver.getPageSource());
+
         String pageSource = driver.getPageSource();
         assertTrue(pageSource.contains("Hello"), "Page should contain 'Hello'");
     }
