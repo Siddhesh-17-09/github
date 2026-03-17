@@ -25,14 +25,14 @@ public class HelloServletTest {
 
     @Test
     public void testPageTitle() {
-        driver.get("http://localhost:8080/java-web-app/hello");
+        driver.get("http://localhost:9090/java-web-app/hello");
         String pageSource = driver.getPageSource();
         assertTrue(pageSource.contains("Hello"), "Page should contain 'Hello'");
     }
 
     @Test
     public void testPageLoads() {
-        driver.get("http://localhost:8080/java-web-app/hello");
+        driver.get("http://localhost:9090/java-web-app/hello");
         assertNotNull(driver.getTitle(), "Page title should not be null");
     }
 
